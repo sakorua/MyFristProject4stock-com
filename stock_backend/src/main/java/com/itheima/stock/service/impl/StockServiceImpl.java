@@ -411,4 +411,16 @@ public class StockServiceImpl implements StockService {
     }
 
 
+    /**
+     * @author SaKoRua
+     * @Description //TODO 个股主营业务查询接口
+     * @Date 1:43 PM 2022/1/17
+     * @Param
+     * @return
+     **/
+    @Override
+    public R<Map> stockDescription(String code) {
+        Map map = stockBusinessMapper.stockDescription(code);
+        return R.ok(map);
+    }
 }

@@ -176,9 +176,29 @@ public class StockController {
         return stockService.externalIndex();
     }
 
+    /**
+     * @author SaKoRua
+     * @Description //TODO 根据输入的个股代码，进行模糊查询，返回证券代码和证券名称
+     * @Date 1:42 PM 2022/1/17
+     * @Param 
+     * @return 
+     **/
     @GetMapping("/stock/search")
     public R<List<Map>> fuzzyQuery(@RequestParam("searchStr") String searchStr) {
         return stockService.fuzzyQuery(searchStr);
     }
+
+    /**
+     * @author SaKoRua
+     * @Description //TODO 个股主营业务查询接口
+     * @Date 1:43 PM 2022/1/17
+     * @Param 
+     * @return 
+     **/
+    @GetMapping("/stock/describe")
+    public R<Map> stockDescription(@RequestParam("code") String code){
+        return stockService.stockDescription(code);
+    }
+
 
 }

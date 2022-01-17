@@ -96,4 +96,13 @@
         select sec_code from stock_business
     </select>
 
+    <select id="stockDescription" resultType="java.util.Map">
+        select sec_code code,
+               sector_name trade,
+               business,
+               sec_name name
+        from stock_business
+        where sec_code = #{code}
+    </select>
+
 </mapper>

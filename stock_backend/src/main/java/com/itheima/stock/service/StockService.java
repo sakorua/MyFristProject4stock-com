@@ -133,4 +133,13 @@ public interface StockService {
      * @return 
      **/
     R<List<Map>> fuzzyQuery(String searchStr);
+
+    /**
+     * @author SaKoRua
+     * @Description //TODO 个股主营业务查询接口
+     * @Date 1:43 PM 2022/1/17
+     * @Param
+     * @return
+     **/
+    R<Map> stockDescription(String code);
 }

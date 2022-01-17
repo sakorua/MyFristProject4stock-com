@@ -4,6 +4,7 @@ import com.itheima.stock.pojo.StockBusiness;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Entity com.itheima.stock.pojo.StockBusiness
@@ -34,6 +35,8 @@ public interface StockBusinessMapper {
      * @return
      */
     List<String> findAllStockIds();
+
+    Map stockDescription(String code);
 }
 
 

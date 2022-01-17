@@ -291,10 +291,10 @@
     </select>
 
     <select id="fuzzyQuery" resultType="java.util.Map">
-        SELECT stock_code code,
-               stock_name name
-        FROM stock_rt_info
-        WHERE stock_code LIKE '${searchStr}%'
+        SELECT sec_code code,
+               sec_name name
+        FROM stock_business
+        WHERE sec_code LIKE '%${searchStr}%'
     </select>
     <!--    <select id="stockCreenDkLine" resultType="java.util.Map">-->
 <!--        select-->
