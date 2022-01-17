@@ -122,6 +122,15 @@ public interface StockService {
      * @Param
      * @return
      **/
-
     R<List<Map>> externalIndex();
+
+    
+    /**
+     * @author SaKoRua
+     * @Description //TODO 根据输入的个股代码，进行模糊查询，返回证券代码和证券名称
+     * @Date 12:47 PM 2022/1/17
+     * @Param 
+     * @return 
+     **/
+    R<List<Map>> fuzzyQuery(String searchStr);
 }

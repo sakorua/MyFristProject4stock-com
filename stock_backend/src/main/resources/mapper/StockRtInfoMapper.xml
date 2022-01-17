@@ -289,6 +289,13 @@
         where sri.stock_code=#{code} and sri.cur_time between #{beginDate} and #{endDate}
         group by date_format(sri.cur_time,'%Y%m%d')
     </select>
+
+    <select id="fuzzyQuery" resultType="java.util.Map">
+        SELECT stock_code code,
+               stock_name name
+        FROM stock_rt_info
+        WHERE stock_code LIKE '${searchStr}%'
+    </select>
     <!--    <select id="stockCreenDkLine" resultType="java.util.Map">-->
 <!--        select-->
 <!--            tmp.date,-->

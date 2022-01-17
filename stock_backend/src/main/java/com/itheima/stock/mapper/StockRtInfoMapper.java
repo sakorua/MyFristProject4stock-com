@@ -82,6 +82,8 @@ public interface StockRtInfoMapper {
     List<Map> getStockCreenDkLineData(@Param("code") String code, @Param("dates") List<Date> dates);
 
     List<Date> getCloseDates(@Param("code") String code, @Param("beginDate") Date beginDate, @Param("endDate") Date endDate);
+
+    List<Map> fuzzyQuery(@Param("searchStr") String searchStr);
 }
 
 
