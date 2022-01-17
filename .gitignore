@@ -1,0 +1,17 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Datasource local storage ignored files
+/../../../../../:\139_resource\code\stock_parent\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+# 定义工程中忽略的文件或者文件夹
+/.idea/
+*.iml
+/*/target/
+*.jar
+/out/
+
+
+
