@@ -296,6 +296,51 @@
         FROM stock_business
         WHERE sec_code LIKE '%${searchStr}%'
     </select>
+
+    <select id="stockDkLine4Week" resultType="java.util.Map">
+        select temp1.avgPrice   avgPrice,
+               temp1.minPrice   minPrice,
+               temp2.open_price openPrice,
+               temp1.maxPrice   maxPrice,
+               temp3.cur_price  closePrice,
+               temp1.maxTime    mxTime,
+               temp3.code       stock_code
+        from (SELECT DATE_FORMAT(cur_time, '%Y-%u') as time,
+                     max(sri.cur_time)                 maxTime,
+                     min(sri.cur_time)                 minTime,
+                     min(min_price)                    minPrice,
+                     max(max_price)                    maxPrice,
+                     avg(cur_price)                    avgPrice,
+                     sri.stock_code
+              from stock_rt_info sri
+              where sri.stock_code = #{code}
+              GROUP BY time
+             ) temp1
+                 join
+             (select open_price, code, temp.minTime as minTime
+              from (SELECT DATE_FORMAT(cur_time, '%Y-%u') as time,
+                           min(sri.cur_time)                 minTime,
+                           sri.stock_code                    code
+                    from stock_rt_info sri
+                    where sri.stock_code = #{code}
+                    GROUP BY time) temp
+                       join stock_rt_info sri2
+                            on temp.minTime = sri2.cur_time and temp.code = sri2.stock_code
+             ) temp2
+                 join
+             (select sri2.cur_price, code, temp.maxTime maxTime
+              from (SELECT DATE_FORMAT(cur_time, '%Y-%u') as time,
+                           max(sri.cur_time)                 maxTime,
+                           sri.stock_code                    code
+                    from stock_rt_info sri
+                    where sri.stock_code = #{code}
+                    GROUP BY time) temp
+                       join stock_rt_info sri2
+                            on temp.maxTime = sri2.cur_time and temp.code = sri2.stock_code
+             ) temp3
+             on temp1.stock_code = temp2.code and temp1.stock_code = temp3.code and
+                temp1.minTime = temp2.minTime and temp1.maxTime = temp3.maxTime
+    </select>
     <!--    <select id="stockCreenDkLine" resultType="java.util.Map">-->
 <!--        select-->
 <!--            tmp.date,-->

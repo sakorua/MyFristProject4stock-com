@@ -177,11 +177,11 @@ public class StockController {
     }
 
     /**
+     * @return
      * @author SaKoRua
      * @Description //TODO 根据输入的个股代码，进行模糊查询，返回证券代码和证券名称
      * @Date 1:42 PM 2022/1/17
-     * @Param 
-     * @return 
+     * @Param
      **/
     @GetMapping("/stock/search")
     public R<List<Map>> fuzzyQuery(@RequestParam("searchStr") String searchStr) {
@@ -189,16 +189,40 @@ public class StockController {
     }
 
     /**
+     * @return
      * @author SaKoRua
      * @Description //TODO 个股主营业务查询接口
      * @Date 1:43 PM 2022/1/17
-     * @Param 
-     * @return 
+     * @Param
      **/
     @GetMapping("/stock/describe")
-    public R<Map> stockDescription(@RequestParam("code") String code){
+    public R<Map> stockDescription(@RequestParam("code") String code) {
         return stockService.stockDescription(code);
     }
 
+
+    /**
+     * @return
+     * @author SaKoRua
+     * @Description //TODO 统计每周内的股票数据信息
+     * @Date 1:53 PM 2022/1/17
+     * @Param
+     **/
+    @GetMapping("/stock/screen/weekkline")
+    public R<Map> stockDkLine4Week(@RequestParam("code") String code) {
+        return stockService.stockDkLine4Week(code);
+    }
+
+    /*
+     * @author SaKoRua
+     * @Description //TODO 获取个股最新分时行情数据
+     * @Date 8:30 AM 2022/1/18
+     * @Param
+     * @return
+     **/
+    @GetMapping("/stock/screen/second/detail")
+    public R<Map> stockQuotes(@RequestParam("code") String code) {
+        return stockService.stockQuotes(code);
+    }
 
 }

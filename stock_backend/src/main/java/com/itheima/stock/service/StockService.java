@@ -142,4 +142,24 @@ public interface StockService {
      * @return
      **/
     R<Map> stockDescription(String code);
+
+    
+    /**
+     * @author SaKoRua
+     * @Description //TODO 统计每周内的股票数据信息 周K线
+     * @Date 2:14 PM 2022/1/17
+     * @Param 
+     * @return 
+     **/
+    R<Map> stockDkLine4Week(String code);
+
+    
+    /**
+     * @author SaKoRua
+     * @Description //TODO 获取个股最新分时行情数据
+     * @Date 8:35 AM 2022/1/18
+     * @Param 
+     * @return 
+     **/
+    R<Map> stockQuotes(String code);
 }
