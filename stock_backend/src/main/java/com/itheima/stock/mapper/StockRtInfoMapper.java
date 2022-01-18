@@ -1,6 +1,7 @@
 package com.itheima.stock.mapper;
 
 import com.itheima.stock.pojo.StockRtInfo;
+import com.itheima.stock.vo.resp.R;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -85,7 +86,9 @@ public interface StockRtInfoMapper {
 
     List<Map> fuzzyQuery(@Param("searchStr") String searchStr);
 
-    Map stockDkLine4Week(String code);
+    Map stockDkLine4Week(@Param("code")String code);
+
+    R<Map> stockQuotes(@Param("code") String code, @Param("date") Date date);
 }
 
 

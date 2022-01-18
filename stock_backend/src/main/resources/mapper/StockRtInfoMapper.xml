@@ -341,6 +341,17 @@
              on temp1.stock_code = temp2.code and temp1.stock_code = temp3.code and
                 temp1.minTime = temp2.minTime and temp1.maxTime = temp3.maxTime
     </select>
+    <select id="stockQuotes" resultType="java.util.Map">
+        select trade_amount tradeAmt,
+               pre_close_price preClosePrice,
+               min_price lowPrice,
+               max_price highPrice,
+               trade_volume tradeVol,
+               DATE_FORMAT(cur_time,'%Y%m%d%h%i')
+        from stock_rt_info sri
+        where sri.stock_code = #{code}
+          and DATE_FORMAT(sri.cur_time,'%Y%m%d') = DATE_FORMAT(#{date},'%Y%m%d')
+    </select>
     <!--    <select id="stockCreenDkLine" resultType="java.util.Map">-->
 <!--        select-->
 <!--            tmp.date,-->

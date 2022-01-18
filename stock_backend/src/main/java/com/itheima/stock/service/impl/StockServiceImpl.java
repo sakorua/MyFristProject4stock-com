@@ -459,6 +459,7 @@ public class StockServiceImpl implements StockService {
      **/
     @Override
     public R<Map> stockQuotes(String code) {
-        return null;
+        Date now = DateTime.now().toDate();
+        return stockRtInfoMapper.stockQuotes(code,now);
     }
 }
